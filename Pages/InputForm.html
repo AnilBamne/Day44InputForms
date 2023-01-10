@@ -1,1 +1,83 @@
 <!--  Welcome to HTML5 Input Forms  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="../CSS/InputForms.css">
+</head>
+
+<body>
+    <header class="headerContainer">HTML5 Input Form</header>
+    <form class="formContainer">
+        <div>
+            <label class="label">Name</label>
+            <input type="text" class="text" id="text">
+            <error-output class="text-error" for="text"></error-output>
+        </div>
+        <div>
+            <label class="label">Email</label>
+            <input type="email" class="email">
+        </div>
+        <div>
+            <label class="label">Password</label>
+            <input type="password" class="pwd">
+        </div>
+        <div>
+            <label class="label">Url</label>
+            <input type="url" class="url">
+        </div>
+        <div>
+            <label class="label">Number</label>
+            <input type="number" class="num">
+        </div>
+        <div>
+            <label class="label">Tel</label>
+            <input type="tel" class="tel">
+        </div>
+        <div>
+            <label class="label">Search</label>
+            <input type="search" class="search">
+        </div>
+        <div>
+            <label for="party" class="label">Choode Date</label>
+            <input type="datetime-local" class="date">
+            <span class="validity"></span>
+        </div>
+        <div>
+            <label for="salary" class="label">Choose Salary</label>
+            <input type="range" class="salary" id="sal" min="30000" max="50000" step="200" value="40000">
+            <output class="salary-output" for="salary">40000</output>
+        </div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+    <script>
+        // script for Name validation
+        const text=document.querySelector('#text');
+        const textError=document.querySelector('.text-error');
+        text.addEventListener('input',function()
+        {
+            let nameReg=RegExp('^[A-z]{1,}[a-z]{2,}$');
+            if(nameReg.test(text.value))
+                textError.textContent='';
+            else
+                textError.textContent='Invalid Name'
+        });
+
+        // Script for salary
+        const Salary=document.querySelector('#sal');
+        const output=document.querySelector('.salary-output');
+        output.textContent=Salary.value;
+        Salary.addEventListener('input',function()
+        {
+            output.textContent=Salary.value;
+        });
+    </script>
+</body>
+
+</html>
